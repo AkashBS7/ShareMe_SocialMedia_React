@@ -1,12 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Login from './components/Login/Login';
+import Home from './container/home/Home';
 
 function App() {
   return (
-    <div className="flex flex-col justify-start items-center w-full h-full border bg-red-300">
-      hii
-      <p className='bg-red-500 w-12 h-12 border'>hiiiajsdiajd</p>
-    </div>
+   <Routes>
+     <Route path='login' element={<Login />} />
+     <Route path='/*' element={<Home />} />
+   </Routes>
   );
 }
 
