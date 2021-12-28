@@ -11,12 +11,12 @@ export default function Feed() {
 
     const [pins, setPins] = useState(null);
     const [loading, setloading] = useState(false);
-    const {catergoryId} = useParams();
+    const {categoryId} = useParams();
 
     useEffect(() => {
         setloading(true);
-        if(catergoryId){
-            const query = searchQuery(catergoryId);
+        if(categoryId){
+            const query = searchQuery(categoryId);
 
             client.fetch(query)
             .then((data) => {
@@ -30,9 +30,13 @@ export default function Feed() {
                 setloading(false);
             })
         }
-    }, [catergoryId])
+    }, [categoryId])
+    console.log('pns',pins)
 
     if(loading) return <Spinner message='We are adding new ideas to your feed!' />
+
+    if(!pins?.length) return <h2>No Pins Available</h2>
+
 
     return (
         <div>
